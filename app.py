@@ -3,7 +3,7 @@ import streamlit as st
 from src.generator import WordGenerator
 from src.saveload import load
 
-MODEL_PATH = "model5.pt"
+MODEL_PATH = "model.pt"
 N_OUTPUTS = 5
 
 st.set_page_config(page_title="HUN Generator")
