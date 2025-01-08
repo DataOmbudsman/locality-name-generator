@@ -32,7 +32,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Beállítások")
-    prefix = st.text_input("Kezdődjön így:", "Hi").lower()
+    prefix = st.text_input("Névkezdet:", "Hi").lower()
     min_len, max_len = 10, 30
     temperature = st.slider(
         "Fantázia:", value=1.0, min_value=0.0, max_value=2.0, step=0.1
@@ -60,12 +60,18 @@ with col2:
     st.subheader("Kitalált nevek")
     if st.button("Csinálj még 5-öt!", use_container_width=True):
         if len(invalid_chars) == 0:
+            try:
                 for _ in range(N_OUTPUTS):
-                    generated = generator.generate_word(
-                        prefix=prefix
-                    )
-                    st.text(generated)
+                        generated = generator.generate_word(prefix=prefix)
+                        st.text(generated)
+            except RecursionError:
+                st.write(
+                    ":red[Nem megy. :( Próbáld más beállításokkal. Esetleg]"
+                    ":red[ a névkezdet túlságosan hasonlít létező névre?]"
+                )
         else:
             invalid_chars_str = ", ".join(invalid_chars)
-            st.write(f"Töröld, mert ilyen karakter nincs magyar helységnévben: "
-                     f":red[{invalid_chars_str}]")
+            st.write(
+                f"Töröld, mert ilyen karakter nincs magyar helységnévben: "
+                f":red[{invalid_chars_str}]"
+            )
