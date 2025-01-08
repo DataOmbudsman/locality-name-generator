@@ -72,6 +72,7 @@ with col2:
         else:
             invalid_chars_str = ", ".join(invalid_chars)
             st.write(
-                f"Töröld, mert ilyen karakter nincs magyar helységnévben: "
+                f"Módosíts a kezdeten, mert "
+                f"ilyen karakter nincs magyar helységnévben: "
                 f":red[{invalid_chars_str}]"
             )
