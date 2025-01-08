@@ -45,9 +45,7 @@ class Trainer:
 
                 clip = self.config.clip
                 if clip:
-                    nn.utils.clip_grad_norm_(
-                        self.model.parameters(), clip
-                    )
+                    nn.utils.clip_grad_norm_(self.model.parameters(), clip)
 
                 optimizer.step()
                 optimizer.zero_grad()
