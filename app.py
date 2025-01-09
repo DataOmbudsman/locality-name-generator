@@ -58,7 +58,7 @@ invalid_chars = generator.validate_prefix(prefix)
 
 with col2:
     st.subheader("Kitalált nevek")
-    if st.button("Csinálj még 5-öt!", use_container_width=True):
+    if st.button("Készíts még 5-öt!", use_container_width=True):
         if len(invalid_chars) == 0:
             try:
                 for _ in range(N_OUTPUTS):
